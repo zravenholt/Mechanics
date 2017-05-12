@@ -42,6 +42,21 @@ const convertData = function (mechanics) {
   return mechanics;
 };
 
+const display = function (data) {
+  console.log('------------------ MECHANICS DATA -------------------');
+  console.log('MECHANIC   -   TASK   -   AVERAGE TIME   -   RATIO');
+  for (let person in data) {
+    for (task in data[person]) {
+      if (data[person][task].average > 0) {
+      // ^^^ allows for possibility that a person may not have done a task, making average === NaN
+        let str = `${person}     ||    ${task}     ||    ${Math.round(data[person][task].average * 100) / 100}     ||    ${Math.round(data[person][task].ratio * 100) / 100}`;
+        console.log(str);
+        console.log('_____________________________________________________');
+      }
+    }
+  }
+};
+
 const findAverages = function (mechanics) {
   let output = {};
   for (let person in mechanics) {
@@ -80,9 +95,10 @@ connection.query('SELECT * from repairs', function(err, rows, fields) {
     console.log('Error while performing Query.'); 
   }
 
-  console.log(mechanics);
   let changedData = convertData(mechanics);
-  console.log(findAverages(changedData));
+  let avgs = findAverages(changedData);
+
+  display(avgs);
 });
 
 
