@@ -1,0 +1,23 @@
+{
+  "name": "mechanics",
+  "version": "1.0.0",
+  "description": "App that organizes and calculates data from csv file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create:db": "mysql -u root < ./createDB.sql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zravenholt/Mechanics.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.13.0"
+  },
+  "bugs": {
+    "url": "https://github.com/zravenholt/Mechanics/issues"
+  },
+  "homepage": "https://github.com/zravenholt/Mechanics#readme"
+}
