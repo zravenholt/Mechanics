@@ -33,7 +33,6 @@ const convertData = function (mechanics) {
   for (let person in mechanics) {
     mechanics[person].forEach((event) => {
       event.days = (convertDate(event.pickupdate) - convertDate(event.dropoffdate) + 1);
-      event.ratio = event.days / repairTypes[event.repairtype];
     });
   }
   return mechanics;
