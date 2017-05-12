@@ -1,0 +1,6 @@
+USE cardata;
+
+LOAD DATA LOCAL INFILE './repair-data.csv' INTO TABLE repairs 
+  FIELDS TERMINATED BY ',' 
+  LINES TERMINATED BY '\r\n' 
+  IGNORE 1 LINES;

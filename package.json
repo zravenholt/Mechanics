@@ -4,7 +4,9 @@
   "description": "App that organizes and calculates data from csv file.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create:db": "mysql -u root < ./createDB.sql",
+    "seed:db": "mysql --local-infile -u root < ./seedDB.sql"
   },
   "repository": {
     "type": "git",
