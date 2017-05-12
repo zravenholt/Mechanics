@@ -42,6 +42,28 @@ const convertData = function (mechanics) {
   return mechanics;
 };
 
+const findAverages = function (mechanics) {
+  let output = {};
+  for (let person in mechanics) {
+    output[person] = {};
+    for (let task in repairTypes) {
+      let totalDays = 0;
+      let count = 0;
+      mechanics[person].forEach((event) => {
+        if (task === event.repairtype) {
+          totalDays += event.days;
+          count ++;
+        }
+      });
+      output[person][task] = {
+        'average': totalDays / count,
+        'ratio': repairTypes[task] / (totalDays / count)
+      };
+    }
+  }
+  return output;
+};
+
 connection.query('SELECT * from repairs', function(err, rows, fields) {
   let mechanics = {};
   if (!err) {
@@ -59,7 +81,8 @@ connection.query('SELECT * from repairs', function(err, rows, fields) {
   }
 
   console.log(mechanics);
-  console.log(convertData(mechanics));
+  let changedData = convertData(mechanics);
+  console.log(findAverages(changedData));
 });
 
 
