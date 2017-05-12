@@ -17,6 +17,31 @@ const repairTypes = {
   'F': 2.5
 };
 
+const convertDate = function (string) {
+  let dropOff = string.split('/');
+
+  dropOff.forEach((num, i) => {
+    dropOff[i] = parseInt(num);
+  });
+
+  let days = 0;
+  days += (dropOff[0] * 30);       //months
+  days += (dropOff[1]);               //days
+  days += (dropOff[2] * 365);     //years
+
+  return days;
+};
+
+const convertData = function (mechanics) {
+  for (let person in mechanics) {
+    mechanics[person].forEach((event) => {
+      event.days = (convertDate(event.pickupdate) - convertDate(event.dropoffdate) + 1);
+      event.ratio = event.days / repairTypes[event.repairtype];
+    });
+  }
+  return mechanics;
+};
+
 connection.query('SELECT * from repairs', function(err, rows, fields) {
   let mechanics = {};
   if (!err) {
@@ -34,6 +59,7 @@ connection.query('SELECT * from repairs', function(err, rows, fields) {
   }
 
   console.log(mechanics);
+  console.log(convertData(mechanics));
 });
 
 
