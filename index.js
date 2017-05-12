@@ -5,7 +5,6 @@ const connection = mysql.createConnection({
   password: '',
   database: 'cardata'
 });
-
 connection.connect();
 
 const repairTypes = {
@@ -19,7 +18,6 @@ const repairTypes = {
 
 const convertDate = function (string) {
   let dropOff = string.split('/');
-
   dropOff.forEach((num, i) => {
     dropOff[i] = parseInt(num);
   });
@@ -28,7 +26,6 @@ const convertDate = function (string) {
   days += (dropOff[0] * 30);       //months
   days += (dropOff[1]);               //days
   days += (dropOff[2] * 365);     //years
-
   return days;
 };
 
@@ -88,8 +85,6 @@ connection.query('SELECT * from repairs', function(err, rows, fields) {
       } else {
         mechanics[row.mechanic] = [row];
       }
-      // console.log('the current row is: ', row);
-      // console.log('row value 1 is: ', row.mechanic);
     });
   } else { 
     console.log('Error while performing Query.'); 
@@ -97,7 +92,6 @@ connection.query('SELECT * from repairs', function(err, rows, fields) {
 
   let changedData = convertData(mechanics);
   let avgs = findAverages(changedData);
-
   display(avgs);
 });
 
