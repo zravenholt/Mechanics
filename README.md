@@ -7,7 +7,8 @@ App that organizes and calculates data from csv file.
 - mySQL
 
 ### Installing and Use
-Make sure that you have mySQL installed and a mySQL server active
+Make sure that you have mySQL installed and a mySQL server active.
+
 From within the root directory:
 
 ```sh
