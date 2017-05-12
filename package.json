@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "create:db": "mysql -u root < ./createDB.sql"
+    "create:db": "mysql -u root < ./createDB.sql",
+    "seed:db": "mysql --local-infile -u root < ./seedDB.sql"
   },
   "repository": {
     "type": "git",
@@ -13,11 +14,11 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "mysql": "^2.13.0"
-  },
   "bugs": {
     "url": "https://github.com/zravenholt/Mechanics/issues"
   },
-  "homepage": "https://github.com/zravenholt/Mechanics#readme"
+  "homepage": "https://github.com/zravenholt/Mechanics#readme",
+  "dependencies": {
+    "mysql": "^2.13.0"
+  }
 }
